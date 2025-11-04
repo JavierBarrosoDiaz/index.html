@@ -252,29 +252,95 @@ width: 100%;
 max-width: 1200px;
 height: auto;
 }
-/* 📱 Estilos para pantallas pequeñas (móviles) */
+/* 📱 Estilos para móviles y tablets */
 @media (max-width: 768px) {
-  header nav a {
-    margin: 5px;
+
+  /* Ajustar header */
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  header img {
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav a {
+    margin: 5px 10px;
     font-size: 14px;
+  }
+
+  /* Secciones generales */
+  section, .section {
+    padding: 20px 10px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  /* Tarjetas de producto */
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
   }
 
   .product-card {
     width: 100%;
     margin: 0 auto;
+    padding: 10px;
   }
 
-  .hero h1 {
-    font-size: 1.6rem;
+  .product-card img {
+    max-width: 100%;
+    height: auto;
   }
 
-  .hero p {
-    font-size: 1rem;
+  .btn-favorito,
+  .btn-carrito {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    top: 6px;
+    right: 6px;
   }
 
-  footer p {
+  .btn-carrito {
+    top: 35px;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 0.9rem;
+    padding: 15px;
+    text-align: center;
+  }
+
+  /* Cesta flotante */
+  #btn-carrito {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 15px;
     font-size: 0.9rem;
   }
+
 }
+
 
 
