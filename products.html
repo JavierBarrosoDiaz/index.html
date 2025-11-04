@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Producto - Mi Tienda</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <a href="index.html">
+  <img src="Naturpower.png" alt="Logo de la tienda" class="logo">
+  </a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="sobre-nosotros.html">Sobre Nosotros</a>
+    <a href="blog.html">Blog</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="carrito.html">Carrito</a>
+  </nav>
+</header>
+
+<section class="section">
+  <h2 id="producto-nombre"></h2>
+  <img id="producto-imagen" src="" alt="" style="max-width:400px; display:block; margin:20px auto;">
+  <p id="producto-descripcion" style="max-width:800px; margin:0 auto; text-align:center;"></p>
+  <p style="text-align:center; margin-top:20px;">
+    Precio: €<span id="producto-precio"></span>
+  </p>
+  <p style="text-align:center; margin-top:20px;">
+    <div class="product-actions">
+    <input type="number" value="1" min="1" class="cantidad">
+    <button id="btn-agregar" class="btn-agregar" style="padding:10px 20px; background:#28a745; color:#fff; border:none; border-radius:5px; cursor:pointer;">
+      Agregar al carrito
+    </button>
+    </div>
+</section>
+
+<a href="carrito.html" id="btn-carrito" style="
+    position: fixed;
+    bottom: 20px;  /* abajo */
+    right: 20px;   /* a la derecha */
+    padding: 12px 20px;
+    background: #f04;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  ">Cesta 🛒</a>
+
+  </p>
+  <p style="text-align:center; margin-top:20px;">
+    <a href="productos.html" style="padding:10px 20px; background:#f04; color:#fff; border-radius:5px; text-decoration:none;">Volver a Productos</a>
+  </p>
+</section>
+
+<script>
+// Base de datos de productos
+const productos = {
+  proteina1: {
+    nombre: "Life Pro Whey Choco Monky 1kg",
+    imagen: "https://www.lifepronutrition.com/3499-thickbox_default/life-pro-whey-choco-monky-1kg-bag-edition.jpg",
+    descripcion: "Proteína Whey de alta calidad para recuperación muscular. Ideal para aumentar masa muscular y mejorar la recuperación post-entrenamiento.",
+    precio: 34.11
+  },
+  proteina2: {
+    nombre: "Life Pro Whey Procao Gluten Free 2kg",
+    imagen: "https://www.lifepronutrition.com/3458-thickbox_default/life-pro-whey-procao-gluten-free-2kg.jpg",
+    descripcion: "Proteína Whey sin gluten, ideal para recuperación muscular y crecimiento de masa muscular, sin comprometer la digestión.",
+    precio: 55.71
+  },
+  vegan: {
+    nombre: "Life Pro Vegan Protein 900g",
+    imagen: "https://www.lifepronutrition.com/4617-thickbox_default/comprar-life-pro-vegan-protein-900g-.jpg",
+    descripcion: "Proteína vegana de origen orgánico, ayuda en recuperación y desarrollo muscular.",
+    precio: 30.51
+  },
+  creatina1: {
+    nombre: "Life Pro Creatine Monohydrate 300g",
+    imagen: "https://www.lifepronutrition.com/4998-thickbox_default/life-pro-creatine-monohydrate-200mesh-300g-lollipop.jpg",
+    descripcion: "Creatina pura para incrementar fuerza, resistencia y rendimiento en entrenamientos de alta intensidad.",
+    precio: 25.11
+  },
+  creatina2: {
+    nombre: "Life Pro Creatine Creapure 650g",
+    imagen: "https://www.lifepronutrition.com/4337-thickbox_default/life-pro-creatine-creapure-650g-unflavoured.jpg",
+    descripcion: "Creatina Creapure® de alta pureza sin sabor, para optimizar fuerza y recuperación muscular.",
+    precio: 36.81
+  },
+  preworkout1: {
+    nombre: "Life Pro Elektro 400g",
+    imagen: "https://www.lifepronutrition.com/3191-thickbox_default/life-pro-elektro-400g.jpg",
+    descripcion: "Pre-workout para mejorar energía y enfoque antes del entrenamiento. Aporta electrolitos y cafeína natural.",
+    precio: 26.91
+  },
+  preworkout2: {
+    nombre: "Life Pro Elektro Ki Caff Free Dragon Ball Z 400g",
+    imagen: "https://www.lifepronutrition.com/4737-thickbox_default/life-pro-elektro-ki-caff-free-dragon-ball-z.jpg",
+    descripcion: "Edición limitada sin cafeína, energía y enfoque para entrenamientos intensos, con diseño especial Dragon Ball Z.",
+    precio: 28.71
+  }
+};
+
+// Obtener parámetro de la URL
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id');
+
+// Mostrar producto
+if(productos[id]){
+  const prod = productos[id];
+  document.getElementById('producto-nombre').textContent = prod.nombre;
+  document.getElementById('producto-imagen').src = prod.imagen;
+  document.getElementById('producto-imagen').alt = prod.nombre;
+  document.getElementById('producto-descripcion').textContent = prod.descripcion;
+  document.getElementById('producto-precio').textContent = prod.precio.toFixed(2);
+
+  document.getElementById('btn-agregar').onclick = () => {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const cantidad = parseInt(document.querySelector('.cantidad').value) || 1;
+    carrito.push({nombre: prod.nombre, precio: prod.precio,cantidad: cantidad});
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+     alert(`${cantidad} x ${prod.nombre} agregado(s) al carrito!`);
+  }
+}else{
+  document.getElementById('producto-nombre').textContent = "Producto no encontrado";
+  document.getElementById('producto-descripcion').textContent = "";
+  document.getElementById('btn-agregar').style.display = "none";
+}
+
+
+</script>
+
+
+</body>
+</html>

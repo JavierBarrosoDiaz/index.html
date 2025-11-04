@@ -1,0 +1,245 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Arial', sans-serif; background:#f5f5f5; }
+
+header { background:#111; display:flex; align-items:center; justify-content:space-between; padding:15px 30px; }
+header img { height:80px; object-fit:contain; }
+nav a { color:#fff; text-decoration:none; margin:0 15px; font-weight:bold; transition:color 0.3s; }
+nav a:hover { color:#f04; }
+
+.hero { background:#222 url('hero-bg.jpg') center/cover no-repeat; color:#fff; text-align:center; padding:100px 20px; }
+.hero h1 { font-size:3em; margin-bottom:20px; }
+.hero p { font-size:1.3em; margin-bottom:30px; }
+.hero a { padding:15px 30px; background:#f04; color:#fff; border-radius:5px; text-decoration:none; font-weight:bold; }
+
+.section { padding:60px 20px; }
+.section h2 { text-align:center; margin-bottom:50px; font-size:2.2em; }
+
+.products { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:25px; max-width:1200px; margin:0 auto; }
+.product-card { background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center; transition: transform 0.3s, box-shadow 0.3s; }
+.product-card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+.product-card img { max-width:100%; border-top-left-radius:10px; border-top-right-radius:10px; }
+.product-card h3 { margin:15px 0 10px; font-size:1.2em; }
+.product-card p { color:#555; padding:0 10px 15px; }
+.product-card a { display:inline-block; margin-bottom:15px; padding:10px 20px; background:#f04; color:#fff; border-radius:5px; text-decoration:none; }
+
+footer { background:#111; color:#fff; text-align:center; padding:25px; margin-top:50px; }
+
+form input, form textarea { width:100%; border:1px solid #ccc; border-radius:5px; }
+form button:hover { background:#d03; }
+
+.product-card {
+  display: block;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-decoration: none;
+  color: #000;
+  padding: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+.product-card h3, 
+.product-card p {
+  margin: 10px 0;
+  text-align: center;
+}
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.product-card:hover h3 {
+  color: #f04;
+}
+
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111;
+  padding: 10px 40px;
+}
+
+.logo {
+  height: 100px; /* ⬅️ Cambia este valor para hacerlo más grande */
+  width: auto; /* mantiene proporción */
+  object-fit: contain;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #f04;
+}
+
+.product-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.product-actions input.cantidad {
+  width: 60px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.product-actions button.btn-agregar {
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.product-actions button.btn-agregar:hover {
+  background: #218838;
+}
+
+
+.product-actions {
+  display: flex;           /* Usamos flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  gap: 10px;               /* Espacio entre input y botón */
+  margin-top: 20px;        /* Separación del resto del contenido */
+}
+
+.product-actions .cantidad {
+  width: 60px;             /* Ancho fijo del input */
+  padding: 5px;
+  text-align: center;      /* Centra el número dentro del input */
+}
+
+.product-actions button {
+  padding: 10px 20px;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ❤️ Botón de favoritos */
+.btn-favorito {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;       /* antes 32px */
+  height: 26px;      /* antes 32px */
+  border-radius: 50%;
+  background: rgba(240, 64, 64, 0.9);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  font-size: 13px;   /* más pequeño */
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.btn-favorito:hover {
+  background: #ff1e1e;
+  transform: scale(1.15);
+}
+
+/* 🛒 Botón del carrito */
+.btn-carrito {
+  position: absolute;
+  top: 42px;         /* debajo del corazón */
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(40, 167, 69, 0.9);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.btn-carrito:hover {
+  background: #2ecc71;
+  transform: scale(1.15);
+}
+
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 🩷 Lista de deseos */
+.wishlist {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.wishlist h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.wishlist ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wishlist li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+
+.wishlist li button {
+  background: #f04;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+

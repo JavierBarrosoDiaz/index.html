@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Tienda de Suplementos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <a href="index.html">
+  <img src="Naturpower.png" alt="Logo de la tienda" class="logo">
+  </a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="sobre-nosotros.html">Sobre Nosotros</a>
+    <a href="blog.html">Blog</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="carrito.html">Carrito</a>
+  </nav>
+</header>
+
+<!-- Carrito -->
+<div id="carrito" style="position:fixed; top:80px; right:20px; width:300px; background:#fff; border:1px solid #ccc; border-radius:8px; padding:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:none; z-index:1000;">
+  <h3>Mi Cesta</h3>
+  <ul id="lista-carrito" style="list-style:none; padding:0; max-height:200px; overflow-y:auto;"></ul>
+  <p>Total: €<span id="total">0</span></p>
+  <button onclick="vaciarCarrito()" style="padding:8px 15px; background:#f04; color:#fff; border:none; border-radius:5px; cursor:pointer;">Vaciar Cesta</button>
+</div>
+<script>
+function agregarAlCarrito(nombre, precio){
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  carrito.push({nombre, precio});
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  alert(nombre+' agregado al carrito!');
+}
+</script>
+
+<!-- Botón para mostrar/ocultar carrito -->
+<a href="carrito.html" id="btn-carrito" style="
+    position: fixed;
+    bottom: 20px;  /* abajo */
+    right: 20px;   /* a la derecha */
+    padding: 12px 20px;
+    background: #f04;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  ">Cesta 🛒</a>
+<section class="hero">
+  <h1>Suplementos de Alto Rendimiento</h1>
+  <p>Alcanza tus metas de gimnasio con nuestros productos premium</p>
+  <a href="productos.html">Ver Productos</a>
+</section>
+
+<section class="section" id="productos">
+  <h2>Productos Destacados</h2>
+  <div class="products">
+    <a href="products.html?id=proteina1" class="product-card">
+      <img src="https://www.lifepronutrition.com/3499-thickbox_default/life-pro-whey-choco-monky-1kg-bag-edition.jpg" alt="Proteína Whey">
+      <h3>Life Pro Whey Choco Monky 1kg Bag Edition</h3>
+      <p>Suplemento de alta calidad para recuperación muscular. 34,11 €</p>
+      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('Life Pro Whey Choco Monky 1kg Bag Edition', 34.11)">❤️</button>
+<button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('Life Pro Whey Choco Monky 1kg Bag Edition',34.11)">
+  🛒
+</button>
+    </a>
+    
+    <a href="products.html?id=creatina1" class="product-card">
+      <img src="https://www.lifepronutrition.com/4998-thickbox_default/life-pro-creatine-monohydrate-200mesh-300g-lollipop.jpg" alt="Creatina">
+      <h3>Life Pro Creatine Monohydrate 200mesh 300g Lollipop</h3>
+      <p>Incrementa tu fuerza y rendimiento en el entrenamiento. 25,11 €</p>
+      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('Life Pro Creatine Monohydrate 200mesh 300g Lollipop', 25.11)">❤️</button>
+      <button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('Life Pro Creatine Monohydrate 200mesh 300g Lollipop',25.11)">
+  🛒
+</button>
+    </a>
+   
+    <a href="products.html?id=preworkout1" class="product-card">
+      <img src="https://www.lifepronutrition.com/3191-thickbox_default/life-pro-elektro-400g.jpg" alt="Pre-Workout">
+      <h3>Life Pro Elektro New 400g</h3>
+      <p>Energía y enfoque para tus sesiones de gimnasio. 26,91 €</p>
+      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('Life Pro Elektro New 400g', 26.91)">❤️</button>
+      <button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('Life Pro Elektro New 400g',26.91)">
+  🛒
+</button>
+    </a>
+   
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 NaturPower. Todos los derechos reservados.
+    <a href="terminos.html">Términos y Condiciones</a>
+    <a href="privacidad.html">Política de Privacidad</a>
+    <a href="cookies.html">Política de Cookies</a>
+  </p>
+</footer>
+
+
+<!-- Banner de Cookies -->
+<div id="cookie-banner" style="
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#111;
+  color:#fff;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:10000;
+  flex-wrap:wrap;
+  box-sizing:border-box;
+">
+  <span>Usamos cookies para mejorar tu experiencia y analizar el tráfico. 
+    <a href="cookies.html" style="color:#f04; text-decoration:underline;">Más información</a>
+  </span>
+  <div style="margin-top:5px;">
+    <button onclick="aceptarCookies()" style="margin-right:10px; padding:8px 15px; background:#28a745; color:#fff; border:none; border-radius:5px; cursor:pointer;">Aceptar</button>
+    <button onclick="rechazarCookies()" style="padding:8px 15px; background:#f04; color:#fff; border:none; border-radius:5px; cursor:pointer;">Rechazar</button>
+  </div>
+</div>
+
+<script>
+function mostrarBannerCookies() {
+  const banner = document.getElementById('cookie-banner');
+  const cookiesAceptadas = localStorage.getItem('cookiesAceptadas');
+  if(!cookiesAceptadas) {
+    banner.style.display = 'flex';
+  } else {
+    banner.style.display = 'none';
+  }
+}
+
+function aceptarCookies() {
+  localStorage.setItem('cookiesAceptadas','true');
+  document.getElementById('cookie-banner').style.display='none';
+  console.log('Cookies aceptadas');
+}
+
+function rechazarCookies() {
+  localStorage.setItem('cookiesAceptadas','false');
+  document.getElementById('cookie-banner').style.display='none';
+  console.log('Cookies rechazadas');
+}
+
+// Mostrar el banner al cargar la página
+document.addEventListener('DOMContentLoaded', mostrarBannerCookies);
+</script>
+
+<script>
+// Recuperamos carrito del localStorage o creamos uno vacío
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+// Mostrar / ocultar carrito flotante
+function toggleCarrito() {
+  const c = document.getElementById('carrito');
+  c.style.display = c.style.display === 'none' ? 'block' : 'none';
+}
+
+// Función para agregar productos al carrito
+function agregarAlCarrito(nombre, precio) {
+  carrito.push({ nombre, precio });
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  actualizarCarrito();
+  alert(nombre + ' agregado al carrito!');
+}
+
+// Vaciar carrito
+function vaciarCarrito() {
+  carrito = [];
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  actualizarCarrito();
+}
+
+// Actualizar el contenido visual del carrito flotante
+function actualizarCarrito() {
+  const lista = document.getElementById('lista-carrito');
+  lista.innerHTML = '';
+  let total = 0;
+  carrito.forEach((item, index) => {
+    total += item.precio;
+    const li = document.createElement('li');
+    li.style.padding = '5px 0';
+    li.style.borderBottom = '1px solid #ddd';
+    li.innerHTML = `${item.nombre} - $${item.precio.toFixed(2)} 
+      <button onclick="eliminarItem(${index})" style="float:right; background:red; color:#fff; border:none; border-radius:3px; cursor:pointer;">X</button>`;
+    lista.appendChild(li);
+  });
+  document.getElementById('total').textContent = total.toFixed(2);
+}
+
+// Eliminar un producto del carrito
+function eliminarItem(index) {
+  carrito.splice(index, 1);
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  actualizarCarrito();
+}
+
+// Inicializar carrito al cargar la página
+document.addEventListener('DOMContentLoaded', actualizarCarrito);
+</script>
+
+<script>
+function agregarADeseos(nombre, precio) {
+  let deseos = JSON.parse(localStorage.getItem('deseos')) || [];
+  deseos.push({nombre, precio});
+  localStorage.setItem('deseos', JSON.stringify(deseos));
+  alert(nombre + ' añadido a tu lista de deseos ❤️');
+}
+</script>
+
+</body>
+</html>
