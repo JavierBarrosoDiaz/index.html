@@ -252,5 +252,29 @@ width: 100%;
 max-width: 1200px;
 height: auto;
 }
+/* 📱 Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  header nav a {
+    margin: 5px;
+    font-size: 14px;
+  }
+
+  .product-card {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+}
 
 
