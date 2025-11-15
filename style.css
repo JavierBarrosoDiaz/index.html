@@ -340,7 +340,51 @@ height: auto;
     font-size: 0.9rem;
   }
 
+.container {
+  display: block;
+  flex-direction: column;
 }
+
+
+.sin-stock {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.product-card {
+  position: relative;
+}
+
+
+.sin-stock-card::after {
+  content: "SIN STOCK";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.sin-stock-card .btn-carrito {
+  display: none;
+}
+
+.product-card {
+  position: relative;
+}
+  
+}
+
 
 
 
