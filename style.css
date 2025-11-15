@@ -1,82 +1,32 @@
-/* =======================
-   RESET GENERAL
-======================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Arial', sans-serif; background:#f5f5f5; }
 
-body {
-  font-family: 'Arial', sans-serif;
-  background: #f5f5f5;
-}
+header { background:#111; display:flex; align-items:center; justify-content:space-between; padding:15px 30px; }
+header img { height:80px; object-fit:contain; }
+nav a { color:#fff; text-decoration:none; margin:0 15px; font-weight:bold; transition:color 0.3s; }
+nav a:hover { color:#f04; }
 
+.hero { background:#222 url('hero-bg.jpg') center/cover no-repeat; color:#fff; text-align:center; padding:100px 20px; }
+.hero h1 { font-size:3em; margin-bottom:20px; }
+.hero p { font-size:1.3em; margin-bottom:30px; }
+.hero a { padding:15px 30px; background:#f04; color:#fff; border-radius:5px; text-decoration:none; font-weight:bold; }
 
+.section { padding:60px 20px; }
+.section h2 { text-align:center; margin-bottom:50px; font-size:2.2em; }
 
-/* =======================
-   HEADER
-======================= */
-header {
-  background: #111;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 30px;
-}
+.products { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:25px; max-width:1200px; margin:0 auto; }
+.product-card { background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center; transition: transform 0.3s, box-shadow 0.3s; }
+.product-card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+.product-card img { max-width:100%; border-top-left-radius:10px; border-top-right-radius:10px; }
+.product-card h3 { margin:15px 0 10px; font-size:1.2em; }
+.product-card p { color:#555; padding:0 10px 15px; }
+.product-card a { display:inline-block; margin-bottom:15px; padding:10px 20px; background:#f04; color:#fff; border-radius:5px; text-decoration:none; }
 
-header img,
-.logo {
-  height: 80px;
-  width: auto;
-  object-fit: contain;
-}
+footer { background:#111; color:#fff; text-align:center; padding:25px; margin-top:50px; }
 
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-  transition: 0.3s;
-}
+form input, form textarea { width:100%; border:1px solid #ccc; border-radius:5px; }
+form button:hover { background:#d03; }
 
-nav a:hover {
-  color: #f04;
-}
-
-
-
-/* =======================
-   SECCIONES
-======================= */
-.section {
-  padding: 60px 20px;
-}
-
-.section h2 {
-  text-align: center;
-  margin-bottom: 50px;
-  font-size: 2.2em;
-}
-
-
-
-/* =======================
-   GRID DE PRODUCTOS
-======================= */
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-
-
-/* =======================
-   TARJETA DE PRODUCTO
-======================= */
 .product-card {
   display: block;
   background: #fff;
@@ -85,48 +35,60 @@ nav a:hover {
   text-decoration: none;
   color: #000;
   padding: 15px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
-
+.product-card h3, 
+.product-card p {
+  margin: 10px 0;
+  text-align: center;
+}
 .product-card img {
   width: 100%;
   border-radius: 10px;
   object-fit: cover;
 }
-
-.product-card h3 {
-  margin: 15px 0 10px;
-  font-size: 1.2em;
-  text-align: center;
-}
-
-.product-card p {
-  color: #555;
-  padding: 0 10px 15px;
-  text-align: center;
+.product-card:hover h3 {
+  color: #f04;
 }
 
 
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111;
+  padding: 10px 40px;
+}
 
-/* =======================
-   BOTÓN AGREGAR + CANTIDAD
-======================= */
+.logo {
+  height: 100px; /* ⬅️ Cambia este valor para hacerlo más grande */
+  width: auto; /* mantiene proporción */
+  object-fit: contain;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #f04;
+}
+
 .product-actions {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
-.product-actions .cantidad {
+.product-actions input.cantidad {
   width: 60px;
   padding: 5px;
   border-radius: 5px;
@@ -134,27 +96,60 @@ nav a:hover {
   text-align: center;
 }
 
-.product-actions button {
-  padding: 10px 20px;
+.product-actions button.btn-agregar {
   background: #28a745;
   color: white;
   border: none;
   border-radius: 5px;
+  padding: 8px 15px;
   cursor: pointer;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.product-actions button.btn-agregar:hover {
+  background: #218838;
 }
 
 
+.product-actions {
+  display: flex;           /* Usamos flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  gap: 10px;               /* Espacio entre input y botón */
+  margin-top: 20px;        /* Separación del resto del contenido */
+}
 
-/* =======================
-   BOTÓN FAVORITOS
-======================= */
+.product-actions .cantidad {
+  width: 60px;             /* Ancho fijo del input */
+  padding: 5px;
+  text-align: center;      /* Centra el número dentro del input */
+}
+
+.product-actions button {
+  padding: 10px 20px;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ❤️ Botón de favoritos */
 .btn-favorito {
   position: absolute;
   top: 8px;
   right: 8px;
-  width: 26px;
-  height: 26px;
+  width: 26px;       /* antes 32px */
+  height: 26px;      /* antes 32px */
   border-radius: 50%;
   background: rgba(240, 64, 64, 0.9);
   color: #fff;
@@ -163,8 +158,10 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  transition: 0.2s;
+  z-index: 10;
+  font-size: 13px;   /* más pequeño */
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 .btn-favorito:hover {
@@ -172,27 +169,25 @@ nav a:hover {
   transform: scale(1.15);
 }
 
-
-
-/* =======================
-   BOTÓN CARRITO
-======================= */
+/* 🛒 Botón del carrito */
 .btn-carrito {
   position: absolute;
-  top: 42px;
+  top: 42px;         /* debajo del corazón */
   right: 8px;
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: rgba(40,167,69,0.9);
-  color: white;
+  background: rgba(40, 167, 69, 0.9);
+  color: #fff;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
   font-size: 13px;
-  transition: 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 .btn-carrito:hover {
@@ -201,22 +196,21 @@ nav a:hover {
 }
 
 
-
-/* =======================
-   WISHLIST
-======================= */
 .container {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
+  align-items: flex-start;
 }
 
+/* 🩷 Lista de deseos */
 .wishlist {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   padding: 20px;
+  flex: 1;
   min-width: 250px;
   max-width: 300px;
 }
@@ -228,31 +222,139 @@ nav a:hover {
 
 .wishlist ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .wishlist li {
   display: flex;
   justify-content: space-between;
-  padding: 8px 0;
+  align-items: center;
   border-bottom: 1px solid #ddd;
+  padding: 8px 0;
 }
 
 .wishlist li button {
   background: #f04;
-  color: white;
+  color: #fff;
   border: none;
-  padding: 3px 8px;
   border-radius: 5px;
+  padding: 3px 8px;
   cursor: pointer;
 }
 
 
 
-/* =======================
-   SIN STOCK
-======================= */
-.sin-stock-card::after {
-  content: "SIN STOCK";
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product-card img {
+width: 100%;
+max-width: 1200px;
+height: auto;
+}
+
+/* 📱 Estilos para móviles y tablets */
+@media (max-width: 768px) {
+
+  /* Ajustar header */
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  header img {
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav a {
+    margin: 5px 10px;
+    font-size: 14px;
+  }
+
+  /* Secciones generales */
+  section, .section {
+    padding: 20px 10px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  /* Tarjetas de producto */
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+  }
+
+  .product-card {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .product-card img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .btn-favorito,
+  .btn-carrito {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    top: 6px;
+    right: 6px;
+  }
+
+  .btn-carrito {
+    top: 35px;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 0.9rem;
+    padding: 15px;
+    text-align: center;
+  }
+
+  /* Cesta flotante */
+  #btn-carrito {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+}
+
+
+.container {
+  display: block;
+  flex-direction: column;
+}
+
+
+.sin-stock {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -264,58 +366,31 @@ nav a:hover {
   font-weight: bold;
 }
 
+.product-card {
+  position: relative;
+}
+
+
+.sin-stock-card::after {
+  content: "SIN STOCK";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
 .sin-stock-card .btn-carrito {
   display: none;
 }
 
-
-
-/* =======================
-   FOOTER
-======================= */
-footer {
-  background: #111;
-  color: #fff;
-  text-align: center;
-  padding: 25px;
-  margin-top: 50px;
+.product-card {
+  position: relative;
 }
 
-
-
-/* =======================
-   RESPONSIVE
-======================= */
-@media (max-width: 768px) {
-
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  nav a {
-    margin: 5px 10px;
-    font-size: 14px;
-  }
-
-  .products {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
-
-  .product-card {
-    padding: 10px;
-  }
-
-  .btn-favorito, .btn-carrito {
-    width: 24px;
-    height: 24px;
-    font-size: 12px;
-  }
-
-  .btn-carrito {
-    top: 35px;
-  }
-}
 
 
 
