@@ -515,6 +515,27 @@ height: auto;
     margin: 0 auto;
 }
 
+.product-card {
+  position: relative; /* importante para que la etiqueta se coloque respecto a la tarjeta */
+  overflow: hidden;   /* evita que la etiqueta se salga de la tarjeta */
+  border-radius: 10px; /* opcional: bordes redondeados */
+  
+}
+
+.product-card .new {
+  position: absolute;
+  top: 10px;     /* distancia desde arriba */
+  left: 10px;    /* distancia desde la izquierda */
+  background-color: #ff6600; /* naranja llamativo */
+  color: #fff;   /* texto blanco para contraste */
+  padding: 5px 12px;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* sombra para destacar */
+  z-index: 10;   /* asegurarse de que esté sobre la imagen */
+}
+
 
 
 
