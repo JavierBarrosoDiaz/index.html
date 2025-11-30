@@ -5,13 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Producto - Mi Tienda</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  .producto-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 30px auto;
+  }
+  .producto-imagen {
+    max-width: 350px;
+    border-radius: 10px;
+  }
+  .producto-detalles {
+    max-width: 500px;
+  }
+  .producto-detalles select, .producto-detalles input {
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 5px;
+  }
+  .btn-agregar {
+    padding: 10px 20px;
+    background:#28a745;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top: 15px;
+  }
+</style>
 </head>
 <body>
 
 <header>
-  <a href="index.html">
-  <img src="Naturpower.png" alt="Logo de la tienda" class="logo">
-  </a>
+  <a href="index.html"><img src="Naturpower.png" alt="Logo de la tienda" class="logo"></a>
   <nav>
     <a href="index.html">Inicio</a>
     <a href="productos.html">Productos</a>
@@ -23,25 +53,42 @@
 </header>
 
 <section class="section">
-  <h2 id="producto-nombre"></h2>
-  <img id="producto-imagen" src="" alt="" style="max-width:400px; display:block; margin:20px auto;">
-  <p id="producto-descripcion" style="max-width:800px; margin:0 auto; text-align:center;"></p>
-  <p style="text-align:center; margin-top:20px;">
-    Precio: €<span id="producto-precio"></span>
-  </p>
-  <p style="text-align:center; margin-top:20px;">
-    <div class="product-actions">
-    <input type="number" value="1" min="1" class="cantidad">
-    <button id="btn-agregar" class="btn-agregar" style="padding:10px 20px; background:#28a745; color:#fff; border:none; border-radius:5px; cursor:pointer;">
-      Agregar al carrito
-    </button>
+  <div class="producto-container">
+    <img id="producto-imagen" class="producto-imagen" src="" alt="">
+    <div class="producto-detalles">
+      <h2 id="producto-nombre"></h2>
+      <p id="producto-descripcion"></p>
+
+      <div>
+        <label><b>Selecciona tamaño:</b></label><br>
+        <select id="producto-tamano"></select>
+      </div>
+
+      <div style="margin-top: 15px;">
+        <label><b>Selecciona sabor:</b></label><br>
+        <select id="producto-sabor"></select>
+      </div>
+
+      <div style="margin-top: 15px;">
+        <label>Cantidad:</label><br>
+        <input type="number" value="1" min="1" class="cantidad">
+      </div>
+
+      <p style="margin-top: 20px; font-size: 20px;">Precio: €<span id="producto-precio"></span></p>
+
+      <button id="btn-agregar" class="btn-agregar">Agregar al carrito</button>
+
+      <p style="margin-top: 20px;">
+        <a href="productos.html" style="padding:10px 20px; background:#f04; color:#fff; border-radius:5px; text-decoration:none;">Volver a Productos</a>
+      </p>
     </div>
+  </div>
 </section>
 
 <a href="carrito.html" id="btn-carrito" style="
     position: fixed;
-    bottom: 20px;  /* abajo */
-    right: 20px;   /* a la derecha */
+    bottom: 20px;
+    right: 20px;
     padding: 12px 20px;
     background: #f04;
     color: #fff;
@@ -50,112 +97,216 @@
     cursor: pointer;
     z-index: 1001;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  ">Cesta 🛒</a>
-
-  </p>
-  <p style="text-align:center; margin-top:20px;">
-    <a href="productos.html" style="padding:10px 20px; background:#f04; color:#fff; border-radius:5px; text-decoration:none;">Volver a Productos</a>
-  </p>
-</section>
+">Cesta 🛒</a>
 
 <script>
-// Base de datos de productos
+// ===================== BASE DE DATOS =====================
 const productos = {
   proteina1: {
     nombre: "Life Pro Whey Choco Monky 1kg",
     imagen: "https://www.lifepronutrition.com/3499-thickbox_default/life-pro-whey-choco-monky-1kg-bag-edition.jpg",
-    descripcion: "Proteína Whey de alta calidad para recuperación muscular. Ideal para aumentar masa muscular y mejorar la recuperación post-entrenamiento.",
-    precio: 35
+    descripcion: "Proteína Whey de alta calidad para recuperación muscular.",
+    precio: 35,
+    sabores: ["ChocoMonky"]  
   },
   proteina2: {
     nombre: "Life Pro Whey Procao Gluten Free 2kg",
     imagen: "https://www.lifepronutrition.com/3458-thickbox_default/life-pro-whey-procao-gluten-free-2kg.jpg",
-    descripcion: "Proteína Whey sin gluten, ideal para recuperación muscular y crecimiento de masa muscular, sin comprometer la digestión.",
-    precio: 55
+    descripcion: "Proteína Whey sin gluten, ideal para recuperación y crecimiento muscular.",
+    precio: 55,
+    sabores: ["Cacao"]
   },
   vegan: {
     nombre: "Life Pro Vegan Protein 900g",
     imagen: "https://www.lifepronutrition.com/4617-thickbox_default/comprar-life-pro-vegan-protein-900g-.jpg",
-    descripcion: "Proteína vegana de origen orgánico, ayuda en recuperación y desarrollo muscular.",
-    precio: 31
+    descripcion: "Proteína vegana de origen vegetal.",
+    precio: 31,
+    sabores: ["ChocolateNatural"]
   },
   creatina1: {
     nombre: "Life Pro Creatine Monohydrate 300g",
     imagen: "https://www.lifepronutrition.com/4998-thickbox_default/life-pro-creatine-monohydrate-200mesh-300g-lollipop.jpg",
-    descripcion: "Creatina pura para incrementar fuerza, resistencia y rendimiento en entrenamientos de alta intensidad.",
-    precio: 25
+    descripcion: "Creatina pura para fuerza y rendimiento.",
+    precio: 25,
+    sabores: ["Lollipop"]
   },
   creatina2: {
     nombre: "Life Pro Creatine Creapure 300g",
     imagen: "https://www.lifepronutrition.com/4337-thickbox_default/life-pro-creatine-creapure-650g-unflavoured.jpg",
-    descripcion: "Creatina Creapure® de alta pureza sin sabor, para optimizar fuerza y recuperación muscular.",
-    precio: 23
+    descripcion: "Creatina Creapure de máxima pureza.",
+    precio: 23,
+    sabores: []
+  },
+  creatina3: {
+    nombre: "Creatina Monohidrato en Polvo",
+    imagen: "https://s4.thcdn.com//productimg/300/300/10530050-1315285205878292.jpg",
+    opciones: [
+      { tamaño: "100 g", precio: 15 },
+      { tamaño: "250 g", precio: 17 }
+    ],
+    sabores: ["SinSabor","Tropical"]
   },
   preworkout1: {
     nombre: "Life Pro Elektro 400g",
     imagen: "https://www.lifepronutrition.com/3191-thickbox_default/life-pro-elektro-400g.jpg",
-    descripcion: "Pre-workout para mejorar energía y enfoque antes del entrenamiento. Aporta electrolitos y cafeína natural.",
+    descripcion: "Energía y enfoque antes del entrenamiento.",
     precio: 26
   },
   preworkout2: {
     nombre: "Life Pro Elektro Ki Caff Free Dragon Ball Z 400g",
     imagen: "https://www.lifepronutrition.com/4737-thickbox_default/life-pro-elektro-ki-caff-free-dragon-ball-z.jpg",
-    descripcion: "Edición limitada sin cafeína, energía y enfoque para entrenamientos intensos, con diseño especial Dragon Ball Z.",
+    descripcion: "Pre-workout sin cafeína edición Dragon Ball.",
     precio: 29
-  },
-  proteina3: {
-    nombre: "Life Pro Whey Dragon Ball Super Limited Edition Vegeta 900g",
-    imagen: "https://www.lifepronutrition.com/4680-thickbox_default/life-pro-whey-dragon-ball-super-limited-edition-vegeta.jpg",
-    descripcion: "Proteína Whey sabor torrija de alta calidad para recuperación muscular. Ideal para aumentar masa muscular y mejorar la recuperación post-entrenamiento.Whey Protein Dragon Ball, edición especial inspirada en Vegeta.  El diseño no es solo una estética. Es un símbolo. Vegeta representa disciplina, superación y orgullo. Y eso mismo es lo que intento transmitirte en cada toma.  ",
-    precio: 31
-  
   },
   preworkout3: {
     nombre: "ELEKTRO NEW 400G 20 SACHETS BUBBLE COLA",
     imagen: "https://evolutionshop.es/991-superlarge_default_2x/elektro-new-400g-20-sachets-bubble-cola.jpg",
-    descripcion: "Edición limitada , energía y enfoque para entrenamientos intensos, con diseño especial.",
-    precio: 29
+    descripcion: "Formato sobres con sabor Bubble Cola.",
+    precio: 29,
+    sabores: ["BubbleCola"]
+  },
+  proteina3: {
+    nombre: "Life Pro Whey Dragon Ball Vegeta 900g",
+    imagen: "https://www.lifepronutrition.com/4680-thickbox_default/life-pro-whey-dragon-ball-super-limited-edition-vegeta.jpg",
+    descripcion: "Proteína Whey edición especial Vegeta.",
+    precio: 31,
+    sabores: ["Torrija"]
   },
   proteina4: {
-    nombre: "WHEY NEW 1 KG STRAWBERRY CHEESECAKE",
+    nombre: "WHEY NEW 1 KG Strawberry Cheesecake",
     imagen: "https://evolutionshop.es/953-superlarge_default_2x/whey-new-2-kg-strawberry-cheesecake.jpg",
-    descripcion: "Proteína Whey sin gluten, ideal para recuperación muscular y crecimiento de masa muscular, sin comprometer la digestión.",
-    precio: 35
+    descripcion: "Proteína Whey sabor Strawberry Cheesecake.",
+    precio: 35,
+    sabores: ["StrawberryCheesecake"]
   },
+  proteina5: {
+    nombre: "Mezcla de Tortitas Proteicas",
+    imagen: "https://s4.thcdn.com//productimg/300/300/10867261-5185183632622529.jpg",
+    opciones: [
+      { tamaño: "200 g", precio: 17 },
+      { tamaño: "500 g", precio: 21 }
+    ],
+    sabores: ["CanelayAzúcar","SaborOriginal"]
+  },
+  proteina6: {
+    nombre: "Impact Whey Protein",
+    imagen: "https://s4.thcdn.com//productimg/300/300/10530943-3505283632278257.png",
+    opciones: [
+      { tamaño: "30 g", precio: 2.5 },
+      { tamaño: "500 g", precio: 23 }
+    ],
+    sabores: ["Plátano","CaféconLecheyCacao","FresaNatural","CremadeFresas","CremadeChocolate","ChocolateNatural"]
+  },
+  proteina7: {
+    nombre: "Batidos Essential",
+    imagen: "https://s4.thcdn.com//productimg/300/300/16670299-1755257697924550.jpg",
+    opciones: [
+      { tamaño: "500 g", precio: 19 }
+    ],
+    sabores: ["Chocolateycaramelo"]
+  },
+  vitaminas1: {
+    nombre: "Zinc y Magnesio Cápsulas",
+    imagen: "https://s4.thcdn.com//productimg/300/300/10529513-9104913772545574.png",
+    opciones: [
+      { tamaño: "60 cápsulas", precio: 9 }
+    ]
+  },
+  vitaminas2: {
+    nombre: "Vitamina C con Bioflavonoides",
+    imagen: "https://s4.thcdn.com//productimg/300/300/10575249-9964904416213287.jpg",
+    opciones: [
+      { tamaño: "60 tabletas", precio: 11 }
+    ]
+  },
+  vitaminas3: {
+    nombre: "Vitamina D3 en Cápsulas",
+    imagen: "https://s4.thcdn.com//productimg/300/300/13527718-2075140071679704.jpg",
+    opciones: [
+      { tamaño: "30 cápsulas", precio: 9 }
+    ]
+  }
 };
 
-// Obtener parámetro de la URL
+// ===================== CARGA DEL PRODUCTO =====================
 const params = new URLSearchParams(window.location.search);
-const id = params.get('id');
+const id = params.get("id");
 
-// Mostrar producto
 if(productos[id]){
-  const prod = productos[id];
-  document.getElementById('producto-nombre').textContent = prod.nombre;
-  document.getElementById('producto-imagen').src = prod.imagen;
-  document.getElementById('producto-imagen').alt = prod.nombre;
-  document.getElementById('producto-descripcion').textContent = prod.descripcion;
-  document.getElementById('producto-precio').textContent = prod.precio.toFixed(2);
+  const p = productos[id];
 
-  document.getElementById('btn-agregar').onclick = () => {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const cantidad = parseInt(document.querySelector('.cantidad').value) || 1;
-    carrito.push({nombre: prod.nombre, precio: prod.precio,cantidad: cantidad});
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-     alert(`${cantidad} x ${prod.nombre} agregado(s) al carrito!`);
+  document.getElementById("producto-nombre").textContent = p.nombre;
+  document.getElementById("producto-imagen").src = p.imagen;
+  document.getElementById("producto-imagen").alt = p.nombre;
+  document.getElementById("producto-descripcion").textContent = p.descripcion;
+
+  const selTamano = document.getElementById("producto-tamano");
+
+  // Manejo de tamaños y precio
+  if(p.opciones && p.opciones.length > 0){
+    p.opciones.forEach(op => {
+      const opt = document.createElement("option");
+      opt.value = op.precio;
+      opt.textContent = `${op.tamaño} — ${op.precio}€`;
+      selTamano.appendChild(opt);
+    });
+    document.getElementById("producto-precio").textContent = selTamano.value;
+    selTamano.onchange = () => {
+      document.getElementById("producto-precio").textContent = selTamano.value;
+    };
+  } else {
+    selTamano.disabled = true;
+    selTamano.innerHTML = "<option>Único tamaño</option>";
+    document.getElementById("producto-precio").textContent = p.precio;
   }
-}else{
-  document.getElementById('producto-nombre').textContent = "Producto no encontrado";
-  document.getElementById('producto-descripcion').textContent = "";
-  document.getElementById('btn-agregar').style.display = "none";
+
+  // Manejo de sabores
+  const selSabor = document.getElementById("producto-sabor");
+  if(p.sabores && p.sabores.length > 0){
+    p.sabores.forEach(sabor => {
+      const opt = document.createElement("option");
+      opt.value = sabor;
+      opt.textContent = sabor;
+      selSabor.appendChild(opt);
+    });
+  } else {
+    selSabor.innerHTML = "<option value=''>Sin opciones</option>";
+    selSabor.disabled = true;
+  }
+
+  // Agregar al carrito
+  document.getElementById("btn-agregar").onclick = () => {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const cantidad = parseInt(document.querySelector(".cantidad").value) || 1;
+    const tamañoElegido = selTamano.options[selTamano.selectedIndex].textContent.split(" — ")[0];
+    const saborElegido = selSabor.value;
+
+    const precioFinal = (p.opciones && p.opciones.length > 0) ? Number(selTamano.value) : p.precio;
+
+    carrito.push({
+      nombre: p.nombre,
+      tamaño: tamañoElegido,
+      sabor: saborElegido,
+      precio: precioFinal,
+      cantidad: cantidad
+    });
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    alert(`${cantidad} x ${p.nombre} (${tamañoElegido}${saborElegido ? ', ' + saborElegido : ''}) agregado(s) al carrito!`);
+  };
+
+} else {
+  document.getElementById("producto-nombre").textContent = "Producto no encontrado";
+  document.getElementById("producto-descripcion").textContent = "";
+  document.getElementById("btn-agregar").style.display = "none";
+  document.getElementById("producto-tamano").style.display = "none";
+  document.getElementById("producto-sabor").style.display = "none";
 }
-
-
 </script>
-
 
 </body>
 </html>
 
 </html>
+
 
