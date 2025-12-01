@@ -539,30 +539,53 @@ height: auto;
 
 .sabor-container {
   text-align: center;
-  margin-top: 20px;
+  margin: 20px auto;
   font-family: 'Arial', sans-serif;
 }
 
+.sabor-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+}
+
 .sabor-select {
-  padding: 10px 15px;
-  border-radius: 8px;
+  padding: 12px 20px;           /* más grande para tocar en móvil */
+  border-radius: 10px;           /* bordes redondeados */
   border: 1px solid #ccc;
   background-color: #fff;
-  font-size: 16px;
-  min-width: 180px;
+  font-size: 1rem;               /* legible en móvil */
+  min-width: 200px;
+  max-width: 90%;                /* responsive para móviles */
   transition: all 0.3s ease;
   cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .sabor-select:hover {
-  border-color: #f04; /* color llamativo al pasar el mouse */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-color: #f04;            /* color llamativo al pasar */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .sabor-select:focus {
   outline: none;
-  border-color: #28a745; /* verde como botón añadir */
-  box-shadow: 0 0 5px #28a745;
+  border-color: #28a745;         /* verde para coincidencia con botón */
+  box-shadow: 0 0 8px #28a745;
+}
+
+/* MEDIA QUERIES para móviles */
+@media screen and (max-width: 600px) {
+  .sabor-select {
+    font-size: 1.1rem;
+    padding: 14px 25px;
+    min-width: 100%;
+  }
+
+  .sabor-container label {
+    font-size: 1.1rem;
+  }
 }
 
 
