@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creatinas - Mi Tienda de Suplementos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+<header>
+  <a href="index.html">
+  <img src="Naturpower.png" alt="Logo de la tienda" class="logo">
+  </a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="sobre-nosotros.html">Sobre Nosotros</a>
+    <a href="blog.html">Blog</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="carrito.html">Carrito</a>
+  </nav>
+</header>
+
+<div id="carrito" style="position:fixed; top:80px; right:20px; width:300px; background:#fff; border:1px solid #ccc; border-radius:8px; padding:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:none; z-index:1000;">
+  <h3>Mi Cesta</h3>
+  <ul id="lista-carrito" style="list-style:none; padding:0; max-height:200px; overflow-y:auto;"></ul>
+  <p>Total: $<span id="total">0</span></p>
+  <button onclick="vaciarCarrito()" style="padding:8px 15px; background:#f04; color:#fff; border:none; border-radius:5px; cursor:pointer;">Vaciar Cesta</button>
+</div>
+
+<a href="carrito.html" id="btn-carrito" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background: #f04;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  ">Cesta 🛒</a>
+
+<nav class="top-menu">
+  <ul>
+      <li class="dropdown">
+          <a href="#">Categorías ▾</a>
+          <div class="dropdown-panel">
+              <ul>
+                <a href="proteinas.html">Proteínas</a>
+                <a href="creatinas.html">Creatinas</a>
+                <a href="preentreno.html">Pre-entrenos</a>
+                <a href="vitaminas.html">Vitaminas </a>
+              </ul>
+          </div>
+      </li>
+  </ul>
+</nav>
+
+<section class="section">
+  <h2>Creatinas</h2>
+  <div class="products">
+    <a href="products.html?id=creatina1" class="product-card">
+      <img src="https://www.lifepronutrition.com/4998-thickbox_default/life-pro-creatine-monohydrate-200mesh-300g-lollipop.jpg" alt="Creatina">
+      <h3>Life Pro Creatine Monohydrate 200mesh 300g Lollipop</h3>
+      <p>25 €</p>
+      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('Life Pro Creatine Monohydrate 200mesh 300g Lollipop', 25)">❤️</button>
+      <button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('Life Pro Creatine Monohydrate 200mesh 300g Lollipop', 25)">🛒</button>
+    </a>
+
+    <a href="products.html?id=creatina2" class="product-card">
+      <img src="https://www.lifepronutrition.com/4337-thickbox_default/life-pro-creatine-creapure-650g-unflavoured.jpg" alt="Creatina">
+      <h3>Life Pro Creatine Creapure® 300g Unflavoured</h3>
+      <p>23 €</p>
+      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('Life Pro Creatine Creapure® 650g Unflavoured', 23)">❤️</button>
+      <button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('Life Pro Creatine Creapure® 650g Unflavoured', 23)">🛒</button>
+    </a>
+
+    <a href="products.html?id=creatina3" class="product-card">
+      <img src="https://s4.thcdn.com//productimg/300/300/10530050-1315285205878292.jpg" alt="Creatina">
+      <h3>Creatina Monohidrato en polvo</h3>
+      <p>17 €</p>
+      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('Creatina Monohidrato en polvo', 17)">❤️</button>
+      <button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('Creatina Monohidrato en polvo', 17)">🛒</button>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 NaturPower. Todos los derechos reservados.
+    <a href="terminos.html">Términos y Condiciones</a>
+    <a href="privacidad.html">Política de Privacidad</a>
+    <a href="cookies.html">Política de Cookies</a>
+  </p>
+</footer>
+
+<script>
+// Lógica de carrito y deseos
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+function toggleCarrito() {
+  const c = document.getElementById('carrito');
+  c.style.display = c.style.display === 'none' ? 'block' : 'none';
+}
+
+function agregarAlCarrito(nombre, precio) {
+  carrito.push({ nombre, precio });
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  actualizarCarrito();
+  alert(nombre + ' agregado al carrito!');
+}
+
+function vaciarCarrito() {
+  carrito = [];
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  actualizarCarrito();
+}
+
+function actualizarCarrito() {
+  const lista = document.getElementById('lista-carrito');
+  lista.innerHTML = '';
+  let total = 0;
+  carrito.forEach((item, index) => {
+    total += item.precio;
+    const li = document.createElement('li');
+    li.style.padding = '5px 0';
+    li.style.borderBottom = '1px solid #ddd';
+    li.innerHTML = `${item.nombre} - $${item.precio.toFixed(2)} 
+      <button onclick="eliminarItem(${index})" style="float:right; background:red; color:#fff; border:none; border-radius:3px; cursor:pointer;">X</button>`;
+    lista.appendChild(li);
+  });
+  document.getElementById('total').textContent = total.toFixed(2);
+}
+
+function eliminarItem(index) {
+  carrito.splice(index, 1);
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  actualizarCarrito();
+}
+
+document.addEventListener('DOMContentLoaded', actualizarCarrito);
+
+function agregarADeseos(nombre, precio) {
+  let deseos = JSON.parse(localStorage.getItem('deseos')) || [];
+  deseos.push({nombre, precio});
+  localStorage.setItem('deseos', JSON.stringify(deseos));
+  alert(nombre + ' añadido a tu lista de deseos ❤️');
+}
+</script>
+
+</body>
+</html>
