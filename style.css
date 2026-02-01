@@ -358,7 +358,7 @@ height: auto;
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgb(153, 29, 29);
+  background: #991D1D;
   color: white;
   padding: 5px 10px;
   font-size: 14px;
@@ -376,7 +376,7 @@ height: auto;
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgb(153, 29, 29);
+  background: #991D1D;
   color: white;
   padding: 5px 10px;
   border-radius: 5px;
@@ -713,6 +713,7 @@ height: auto;
 .dropdown-panel a:hover {
   background-color: #f4f4f4;
 }
+
 
 
 
