@@ -109,13 +109,7 @@ const productos = {
     precio: 35,
     sabores: ["ChocoMonky"]  
   },
-  proteina2: {
-    nombre: "Life Pro Whey Procao Gluten Free 2kg",
-    imagen: "https://www.lifepronutrition.com/3458-thickbox_default/life-pro-whey-procao-gluten-free-2kg.jpg",
-    descripcion: "Proteína Whey sin gluten, ideal para recuperación y crecimiento muscular.",
-    precio: 55,
-    sabores: ["Cacao"]
-  },
+  
   vegan: {
     nombre: "Life Pro Vegan Protein 900g",
     imagen: "https://www.lifepronutrition.com/4617-thickbox_default/comprar-life-pro-vegan-protein-900g-.jpg",
@@ -140,6 +134,7 @@ const productos = {
   creatina3: {
     nombre: "Creatina Monohidrato en Polvo",
     imagen: "https://s4.thcdn.com//productimg/300/300/10530050-1315285205878292.jpg",
+    descripcion: "Creatina monohidrato en polvo de alta pureza.",
     opciones: [
       { tamaño: "100 g", precio: 4.99 },
       { tamaño: "250 g", precio: 11.5 }
@@ -182,6 +177,7 @@ const productos = {
   proteina5: {
     nombre: "Mezcla de Tortitas Proteicas",
     imagen: "https://s4.thcdn.com//productimg/300/300/10867261-5185183632622529.jpg",
+    descripcion: "Mezcla de tortitas proteicas listas para preparar.",
     opciones: [
       { tamaño: "200 g", precio: 6.99 },
       { tamaño: "500 g", precio: 21 }
@@ -191,6 +187,7 @@ const productos = {
   proteina6: {
     nombre: "Impact Whey Protein",
     imagen: "https://s4.thcdn.com//productimg/300/300/10530943-3505283632278257.png",
+   descripcion: "Proteína whey de alta calidad y sabor delicioso.",
     opciones: [
       { tamaño: "30 g", precio: 2 },
       { tamaño: "500 g", precio: 14.99 }
@@ -200,14 +197,18 @@ const productos = {
   proteina7: {
     nombre: "Batidos Essential",
     imagen: "https://s4.thcdn.com//productimg/300/300/16670299-1755257697924550.jpg",
+    descripcion: "Batidos proteicos listos para beber.",
     opciones: [
       { tamaño: "500 g", precio: 11.5 }
     ],
     sabores: ["Chocolateycaramelo"]
   },
   vitaminas1: {
+  
     nombre: "Zinc y Magnesio Cápsulas",
     imagen: "https://s4.thcdn.com//productimg/300/300/10529513-9104913772545574.png",
+    descripcion: "Nuestro suplemento de Zinc y Magnesio está diseñado para apoyar el bienestar integral del cuerpo. El zinc contribuye al buen funcionamiento del sistema inmunológico y favorece la salud de la piel. El magnesio apoya la función muscular y nerviosa, ayuda a reducir el cansancio y la fatiga, y contribuye a un descanso más reparador.",
+    
     opciones: [
       { tamaño: "60 cápsulas", precio: 5.99 }
     ]
@@ -215,6 +216,7 @@ const productos = {
   vitaminas2: {
     nombre: "Vitamina C con Bioflavonoides",
     imagen: "https://s4.thcdn.com//productimg/300/300/10575249-9964904416213287.jpg",
+    descripcion: "Nuestra Vitamina C con Bioflavonoides está formulada para brindar un potente apoyo al sistema inmunológico y proteger las células frente al daño oxidativo. La vitamina C contribuye a la producción de colágeno. Ideal para fortalecer las defensas, aumentar la vitalidad diaria y apoyar el bienestar general de forma natural.",
     opciones: [
       { tamaño: "60 tabletas", precio: 5.99 }
     ]
@@ -222,10 +224,132 @@ const productos = {
   vitaminas3: {
     nombre: "Vitamina D3 en Cápsulas",
     imagen: "https://s4.thcdn.com//productimg/300/300/13527718-2075140071679704.jpg",
+    descripcion: "Nuestra Vitamina D3 contribuye a la correcta absorción del calcio y el fósforo, apoyando la salud de los huesos y dientes.Ideal para fortalecer el cuerpo, apoyar las defensas y promover una salud integral durante todo el año.",
+   
     opciones: [
       { tamaño: "30 cápsulas", precio: 5.99 }
     ]
-  }
+  },
+  vitaminas4: {
+    nombre: "L-TRIPTÓFANO 500mg",
+    imagen: "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/swv/swv11502/y/40.jpg",
+    descripcion: "Complemento alimenticio de L-Triptófano para el bienestar emocional y descanso. 60 cápsulas vegetales de 500 mg.",
+    opciones: [
+      { tamaño: "60 cápsulas", precio: 9.99 }
+    ],
+    sabores: []
+  },
+
+  proteina8: {
+    nombre: "Proteína de Soja Aislada 2.0",
+    imagen: "https://www.hsnstore.com/media/catalog/product/cache/2/thumbnail/9df78eab33525d08d6e5fb8d27136e95/s/o/soy-protein-isolate-gral-front-hsn_1.webp",
+    descripcion: "Proteína vegetal aislada de soja de alta calidad.",
+    opciones: [
+      { tamaño: "500 g", precio: 11.99 }
+    ],
+    sabores: ["Vainilla"]
+  },
+
+  proteina9: {
+    nombre: "EVOTONIC",
+    imagen: "https://m.media-amazon.com/images/I/61bX7NNFs9L._AC_UF1000,1000_QL80_.jpg",
+    descripcion: "Batido proteico instantáneo para recuperación y rendimiento.",
+    opciones: [
+      { tamaño: "500 g", precio: 18.99 }
+    ],
+    sabores: ["Cola"]
+  },
+
+  proteina10: {
+    nombre: "EVONATURAL WHEY",
+    imagen: "https://www.hsnstore.com/media/catalog/product/e/v/evonatural-whey-chai-tea-latte-2kg-front-hsn_1.webp",
+    descripcion: "Proteína whey natural sin aditivos artificiales.",
+    opciones: [
+      { tamaño: "500 g", precio: 17.99 },
+    ],
+    sabores: ["Té Chai con leche"]
+  },
+
+  proteina11: {
+    nombre: "Crema de Arroz Proteica",
+    imagen: "https://www.hsnstore.com/media/catalog/product/cache/2/small_image/9df78eab33525d08d6e5fb8d27136e95/h/i/high-protein-rice-cream-hsn_1.webp",
+    descripcion: "Fuente de carbohidratos y proteínas ideal para antes o después del entrenamiento.",
+    opciones: [
+      { tamaño: "500 g", precio: 15.99 }
+    ],
+    sabores: ["Original","Chocolate y Cacahuete"]
+  },
+
+  proteina12: {
+    nombre: "EVOCLEAR HYDRO",
+    imagen: "https://www.hsnstore.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/e/v/evoclear-hydro-energy-500-g-hsn_1_1.webp",
+    descripcion: "Proteína hidrolizada de rápida absorción.",
+    opciones: [
+      { tamaño: "500 g", precio: 31.99 },
+    ],
+    sabores: ["Bebida Energética"]
+  },
+
+  proteina13: {
+    nombre: "EVONATIVE CASEIN (Lacprodan® Micelpure™)",
+    imagen: "https://www.hsnstore.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/e/s/es-info-6-micellar-casein-hsn_1.webp",
+    descripcion: "Caseína micelar de liberación lenta ideal para la noche.",
+    opciones: [
+      { tamaño: "500 g", precio: 19.99 },
+    ],
+    sabores: ["Tarta de queso y limón"]
+  },
+
+  vitaminas5: {
+    nombre: "Melatonina 1,9mg",
+    imagen: "https://www.hsnstore.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/t/i/time-release-melatonin-19mg-120-tabs-front-hsn_1.webp",
+    descripcion: "Complemento de melatonina para mejorar el descanso. 120 tabletas de liberación prolongada.",
+    opciones: [
+      { tamaño: "120 tabletas", precio: 9.99 }
+    ],
+    sabores: []
+  },
+
+  creatina4: {
+    nombre: "Creatina Monohidrato en Polvo",
+    imagen: "https://www.hsnstore.com/media/catalog/product/cache/2/thumbnail/9df78eab33525d08d6e5fb8d27136e95/c/r/creatine-monohydrate-gral-100pure-front-hsn_1.webp",
+    descripcion: "Creatina monohidrato 100% pura para fuerza y potencia.",
+    opciones: [
+      { tamaño: "500 g", precio: 13.99 },
+      { tamaño: "1 kg", precio: 26.99 }
+    ],
+    sabores: []
+  },
+
+  vaso:{
+    nombre: "VASO CAFÉ TÉRMICO",
+    imagen: "https://www.hsnstore.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/v/a/vaso-cafe-termico-300ml-blanco-6-hsn_1.webp",
+    descripcion: "Vaso térmico para café de 300ml, ideal para mantener la temperatura de tu bebida.",
+    opciones: [
+      { tamaño: "300 ml", precio: 11.99 }
+    ],
+    
+  },
+
+  proteina14: {
+    nombre: "EVOWHEY PROTEIN",
+    imagen: "https://www.hsnstore.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/e/v/evowhey-strawberry-500g-new-front-hsn_1.webp",
+    descripcion: "Proteína whey de alta calidad para recuperación muscular.",
+    opciones: [
+      { tamaño: "500 g", precio: 16.99 }
+    ],
+    sabores: ["Chocolate"]
+  },
+
+  proteina15: {
+    nombre: "EVOMASS 2.0 (GANADOR DE PESO)",
+    imagen: "https://www.hsnstore.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/e/v/evomass-2-white-chocolate-1-kg-front-hsn_1.webp",
+    descripcion: "Proteína de alta densidad calórica para ganar masa muscular.",
+    opciones: [
+      { tamaño: "1 kg", precio: 19.99 }
+    ],
+    sabores: ["Chocolate blanco"]
+  },
 };
 
 // ===================== CARGA DEL PRODUCTO =====================
