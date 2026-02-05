@@ -8,6 +8,8 @@
 </head>
 <body>
 
+
+
 <header>
   <a href="index.html">
   <img src="Naturpower.png" alt="Logo de la tienda" class="logo">
@@ -61,36 +63,57 @@ function agregarAlCarrito(nombre, precio){
 <section class="section" id="productos">
   <h2>Productos Destacados</h2>
   <div class="products">
-    <a href="products.html?id=proteina1" class="product-card">
+    <a href="products.html?id=proteina1" id="proteina1" class="product-card" data-category="proteina">
       <img src="https://www.lifepronutrition.com/3499-thickbox_default/life-pro-whey-choco-monky-1kg-bag-edition.jpg" alt="Proteína Whey">
       <h3>Life Pro Whey Choco Monky 1kg Bag Edition</h3>
       <p>Suplemento de alta calidad para recuperación muscular. 35 €</p>
-      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('Life Pro Whey Choco Monky 1kg Bag Edition', 35)">❤️</button>
-<button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('Life Pro Whey Choco Monky 1kg Bag Edition',35)">
+      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('proteina1','Life Pro Whey Choco Monky 1kg Bag Edition', 35,'products.html?id=proteina1')">❤️</button>
+<button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('proteina1','Life Pro Whey Choco Monky 1kg Bag Edition', 35,'products.html?id=proteina1')">
   🛒
 </button>
     </a>
     
-    <a href="products.html?id=creatina1" class="product-card">
+    <a href="products.html?id=creatina1" id="creatina1" class="product-card" data-category="creatina">
       <img src="https://www.lifepronutrition.com/4998-thickbox_default/life-pro-creatine-monohydrate-200mesh-300g-lollipop.jpg" alt="Creatina">
       <h3>Life Pro Creatine Monohydrate 200mesh 300g Lollipop</h3>
       <p>Incrementa tu fuerza y rendimiento en el entrenamiento. 25 €</p>
-      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('Life Pro Creatine Monohydrate 200mesh 300g Lollipop', 25)">❤️</button>
-      <button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('Life Pro Creatine Monohydrate 200mesh 300g Lollipop',25)">
+      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('creatina1','Life Pro Creatine Monohydrate 200mesh 300g Lollipop', 25,'products.html?id=creatina1')">❤️</button>
+      <button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('creatina1','Life Pro Creatine Monohydrate 200mesh 300g Lollipop', 25,'products.html?id=creatina1')">
   🛒
 </button>
     </a>
    
-    <a href="products.html?id=preworkout1" class="product-card sin-stock-card">
+    <a href="products.html?id=preworkout1" id="preworkout1" class="product-card sin-stock-card" data-category="preworkout">
       <span class="sin-stock">SIN STOCK</span>
       <img src="https://www.lifepronutrition.com/3191-thickbox_default/life-pro-elektro-400g.jpg" alt="Pre-Workout">
       <h3>Life Pro Elektro New 400g</h3>
       <p>Energía y enfoque para tus sesiones de gimnasio. 26 €</p>
-      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('Life Pro Elektro New 400g', 26)">❤️</button>
-      <button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('Life Pro Elektro New 400g',26)">
+      <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('preworkout1','Life Pro Elektro New 400g', 26,'products.html?id=preworkout1')">❤️</button>
+      <button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('preworkout1','Life Pro Elektro New 400g', 26,'products.html?id=preworkout1')">
   🛒
 </button>
     </a>
+
+    <a href="products.html?id=proteina11" id="proteina11" class="product-card" data-category="proteina">
+    <span class="new">NUEVO</span>
+    <img src="https://www.hsnstore.com/media/catalog/product/cache/2/small_image/9df78eab33525d08d6e5fb8d27136e95/h/i/high-protein-rice-cream-hsn_1.webp" alt="Proteína Whey">
+    <h3>CREMA DE ARROZ PROTEICA</h3>
+    <p>Crema de arroz proteica, suave y nutritiva, ideal como snack rico en proteínas. 15,99 €</p>
+    <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('proteina11','CREMA DE ARROZ PROTEICA', 15.99,'products.html?id=proteina11')">❤️</button>
+  <button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('proteina11','CREMA DE ARROZ PROTEICA', 15.99,'products.html?id=proteina11')">
+  🛒
+</button>
+  </a>
+
+  <a href="products.html?id=proteina13" id="proteina13" class="product-card" data-category="proteina">
+    <img src="https://www.hsnstore.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/e/s/es-info-6-micellar-casein-hsn_1.webp" alt="Proteína Whey">
+    <h3>EVONATIVE CASEIN (Lacprodan® Micelpure™)</h3>
+    <p>Proteína micelar de liberación lenta, ideal para nutrición nocturna y recuperación muscular. 19,99 €</p>
+    <button class="btn-favorito" onclick="event.preventDefault(); event.stopPropagation();agregarADeseos('proteina13','EVONATIVE CASEIN (Lacprodan® Micelpure™)', 19.99,'products.html?id=proteina13')">❤️</button>
+  <button class="btn-carrito" onclick="event.preventDefault(); event.stopPropagation(); agregarAlCarrito('proteina13','EVONATIVE CASEIN (Lacprodan® Micelpure™)', 19.99,'products.html?id=proteina13')">
+  🛒
+</button>
+  </a>
    
   </div>
 </section>
@@ -207,16 +230,109 @@ function eliminarItem(index) {
 
 // Inicializar carrito al cargar la página
 document.addEventListener('DOMContentLoaded', actualizarCarrito);
-</script>
 
-<script>
-function agregarADeseos(nombre, precio) {
+
+
+function agregarADeseos(nombre, precio, id) {
   let deseos = JSON.parse(localStorage.getItem('deseos')) || [];
-  deseos.push({nombre, precio});
+  deseos.push({nombre, precio, id});
   localStorage.setItem('deseos', JSON.stringify(deseos));
   alert(nombre + ' añadido a tu lista de deseos ❤️');
 }
+
+function mostrarToast(mensaje, duracion = 3000) {
+  const container = document.getElementById('toast-container');
+
+  // Crear toast
+  const toast = document.createElement('div');
+  toast.textContent = mensaje;
+  toast.style.background = '#28a745';
+  toast.style.color = '#fff';
+  toast.style.padding = '10px 15px';
+  toast.style.borderRadius = '8px';
+  toast.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+  toast.style.opacity = '0';
+  toast.style.transform = 'translateY(20px)';
+  toast.style.transition = 'all 0.3s ease';
+
+  container.appendChild(toast);
+
+  // Animación de entrada
+  requestAnimationFrame(() => {
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+  });
+
+  // Desaparecer después de X ms
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(20px)';
+    toast.addEventListener('transitionend', () => toast.remove());
+  }, duracion);
+}
+
+function agregarAlCarrito(id, nombreProducto, precio) {
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  carrito.push({ id, nombre: nombreProducto, precio });
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+
+  mostrarToast(nombreProducto + ' agregado al carrito! 🛒');
+}
+
+function agregarADeseos(id, nombreProducto, precio) {
+  let deseos = JSON.parse(localStorage.getItem('deseos')) || [];
+  
+  // Evitar duplicados
+  if (!deseos.some(item => item.id === id)) {
+    deseos.push({ id, nombre: nombreProducto, precio });
+    localStorage.setItem('deseos', JSON.stringify(deseos));
+
+    mostrarToast(nombreProducto + ' añadido a tus deseos ❤️', 3000, '#ff4081'); // toast rosa para deseos
+  } else {
+    mostrarToast(nombreProducto + ' ya está en tus deseos ⭐', 3000, '#ff4081');
+  }
+}
+
+function mostrarToast(mensaje, duracion = 3000, color = '#28a745') {
+  const container = document.getElementById('toast-container');
+
+  const toast = document.createElement('div');
+  toast.textContent = mensaje;
+  toast.style.background = color;
+  toast.style.color = '#fff';
+  toast.style.padding = '10px 15px';
+  toast.style.borderRadius = '8px';
+  toast.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+  toast.style.opacity = '0';
+  toast.style.transform = 'translateY(20px)';
+  toast.style.transition = 'all 0.3s ease';
+
+  container.appendChild(toast);
+
+  requestAnimationFrame(() => {
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+  });
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(20px)';
+    toast.addEventListener('transitionend', () => toast.remove());
+  }, duracion);
+}
+
 </script>
+
+<!-- Contenedor de notificaciones tipo toast -->
+<div id="toast-container" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+"></div>
 
 </body>
 </html>
