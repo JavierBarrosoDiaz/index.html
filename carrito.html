@@ -53,6 +53,7 @@
 </div>
 
 <script>
+
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 function actualizarCarrito() {
@@ -100,39 +101,141 @@ document.getElementById('form-checkout').addEventListener('submit', function(e){
 });
 
 actualizarCarrito();
-</script>
+// ===== LISTA DE DESEOS MEJORADA =====
 
-<script>
-// --- LISTA DE DESEOS ---
 let deseos = JSON.parse(localStorage.getItem('deseos')) || [];
 
 function actualizarDeseos() {
+
   const lista = document.getElementById('lista-deseos');
+
   lista.innerHTML = '';
+
+  if (deseos.length === 0) {
+    lista.innerHTML = '<li>Tu lista está vacía ❤️</li>';
+    return;
+  }
+
   deseos.forEach((item, index) => {
+
     const li = document.createElement('li');
+
+    li.style.padding = '8px 0';
+    li.style.borderBottom = '1px solid #ddd';
+
     li.innerHTML = `
-      ${item.nombre}
-      <button onclick="eliminarDeseo(${index})">X</button>
+
+      <a href="${item.link}"
+         style="font-weight:600;color:#00ffae;text-decoration:none">
+        ${item.nombre}
+      </a>
+      - €${item.precio}
+
+      <br>
+
+      <button onclick="pasarACarrito(${index})"
+        style="margin-top:5px;
+        background:#0a0;color:#fff;
+        border:none;padding:4px 8px;
+        border-radius:4px;cursor:pointer">
+        🛒 Añadir
+      </button>
+
+      <button onclick="eliminarDeseo(${index})"
+        style="margin-top:5px;
+        background:red;color:#fff;
+        border:none;padding:4px 8px;
+        border-radius:4px;cursor:pointer">
+        ❌
+      </button>
+
     `;
+
     lista.appendChild(li);
+
   });
+
   localStorage.setItem('deseos', JSON.stringify(deseos));
 }
 
-function agregarADeseos(nombre, precio) {
-  deseos.push({nombre, precio});
+
+
+// Guardar deseos con link
+function agregarADeseos(nombre, precio, link) {
+
+  // evitar duplicados
+  if (deseos.some(p => p.link === link)) {
+    alert("Ya está en deseos ❤️");
+    return;
+  }
+
+  deseos.push({ nombre, precio, link });
+
   localStorage.setItem('deseos', JSON.stringify(deseos));
-  alert(nombre + ' añadido a tu lista de deseos ❤️');
+
+  alert(nombre + ' añadido a tu lista ❤️');
+
   actualizarDeseos();
 }
+
+
 
 function eliminarDeseo(index) {
+
   deseos.splice(index, 1);
+
+  localStorage.setItem('deseos', JSON.stringify(deseos));
+
   actualizarDeseos();
 }
 
-actualizarDeseos();
+
+
+// Pasar deseos → carrito
+function pasarACarrito(index) {
+
+  const producto = deseos[index];
+
+  carrito.push({
+    nombre: producto.nombre,
+    precio: producto.precio,
+    cantidad: 1,
+    link: producto.link
+  });
+
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+
+  deseos.splice(index, 1);
+
+  localStorage.setItem('deseos', JSON.stringify(deseos));
+
+  actualizarCarrito();
+  actualizarDeseos();
+
+  alert("Añadido al carrito 🛒");
+}
+
+
+document.addEventListener('DOMContentLoaded', actualizarDeseos);
+
+li.innerHTML = `
+  <a href="${item.link}"
+     style="color:#00ffae;text-decoration:none;font-weight:600">
+    ${item.nombre}
+  </a>
+  x${item.cantidad || 1}
+  - €${(item.precio*(item.cantidad||1)).toFixed(2)}
+
+  <button onclick="eliminarItem(${index})"
+    style="float:right; background:red; color:#fff;
+    border:none; border-radius:3px; cursor:pointer;">
+    X
+  </button>
+`;
+
+
+
+
 </script>
 
 
