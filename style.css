@@ -1013,6 +1013,23 @@ button {
   display: none !important;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+.search-container,
+.filter-container {
+  margin: 0 10px;
+}
 
 
 
